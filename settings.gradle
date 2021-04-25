@@ -1,0 +1,4 @@
+include ':utils'
+include ':WhaleEngine'
+include ':app'
+rootProject.name = "WhaleEngineExample"

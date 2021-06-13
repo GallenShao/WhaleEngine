@@ -1,6 +1,7 @@
 package io.github.gallenshao.WhaleEngine.graphics
 
 import android.opengl.GLES30
+import io.github.gallenshao.WhaleEngine.Object2D
 import io.github.gallenshao.WhaleEngine.Renderer
 import io.github.gallenshao.WhaleEngine.parameter.CombinedParameter
 import io.github.gallenshao.WhaleEngine.utils.GLCommand
@@ -16,7 +17,7 @@ class RenderBatch(var size : Size) {
 
     var renderer : Renderer? = null
 
-    fun addObject(instance : Object2DInstance) : Boolean {
+    fun addInstance(instance : Object2DInstance) : Boolean {
         if (!objects_type.contains(instance.object2D.type)) {
             if (uniformCounts + instance.object2D.getUniformCounts() > MAX_UNIFORMS) {
                 return false

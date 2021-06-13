@@ -4,9 +4,7 @@ import android.opengl.GLES30.*
 import android.opengl.GLSurfaceView
 import javax.microedition.khronos.egl.EGLConfig
 import javax.microedition.khronos.opengles.GL10
-import io.github.gallenshao.WhaleEngine.*
 import io.github.gallenshao.WhaleEngine.graphics.*
-import io.github.gallenshao.WhaleEngine.parameter.Layout
 
 class MyGLRenderer : GLSurfaceView.Renderer {
 
@@ -34,9 +32,9 @@ class MyGLRenderer : GLSurfaceView.Renderer {
         val circle_instance1 = circle.genInstance()
         circle_instance1.position = Point(500.0f, 500.0f)
 
-        scene.addObject(rect_instance1)
-        scene.addObject(rect_instance2)
-        scene.addObject(circle_instance1)
+        scene.addInstance(rect_instance1)
+        scene.addInstance(rect_instance2)
+        scene.addInstance(circle_instance1)
 
         scene.compile()
     }

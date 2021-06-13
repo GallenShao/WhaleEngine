@@ -2,10 +2,8 @@ package io.github.gallenshao.WhaleEngine
 
 import io.github.gallenshao.WhaleEngine.graphics.*
 
-abstract class Object2D {
-
-    var size : Size = Size(1.0f, 1.0f)
-    var color : Vec4 = Vec4(1.0f, 1.0f, 1.0f, 1.0f)
+abstract class Object2D(var size : Size = Size(1.0f, 1.0f),
+                        var color : Vec4 = Vec4(1.0f, 1.0f, 1.0f, 1.0f)) {
     val type : Int = type_family++
 
     fun genInstance() : Object2DInstance {

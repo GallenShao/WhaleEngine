@@ -2,7 +2,9 @@ package io.github.gallenshao.WhaleEngine.graphics
 
 import io.github.gallenshao.WhaleEngine.Object2D
 
-class RectObject2D : Object2D() {
+open class RectObject2D(size : Size = Size(1.0f, 1.0f),
+                        color : Vec4 = Vec4(1.0f, 1.0f, 1.0f, 1.0f))
+    : Object2D(size, color) {
 
     /**
      * generated fragment shader function body

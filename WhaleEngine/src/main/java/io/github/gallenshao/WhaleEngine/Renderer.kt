@@ -87,8 +87,14 @@ class Renderer(
         GLCommand.glDrawElements(mode, elementSize, GL_UNSIGNED_INT, 0)
     }
 
+    private fun bindRenderState() {
+        GLCommand.glEnable(GL_BLEND)
+        GLCommand.glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
+    }
+
     fun render() {
         program.active()
+        bindRenderState()
         bindParameters()
         performRender()
         unbindParameters()

@@ -38,6 +38,10 @@ object GLCommand {
             GLES30.GL_INT -> "GL_INT"
             GLES30.GL_UNSIGNED_INT -> "GL_UNSIGNED_INT"
             GLES30.GL_FRAMEBUFFER -> "GL_FRAMEBUFFER"
+            GLES30.GL_BLEND -> "GL_BLEND"
+            GLES30.GL_SRC_ALPHA -> "GL_SRC_ALPHA"
+            GLES30.GL_ONE_MINUS_SRC_ALPHA -> "GL_ONE_MINUS_SRC_ALPHA"
+            GLES30.GL_MAX_FRAGMENT_UNIFORM_VECTORS -> "GL_MAX_FRAGMENT_UNIFORM_VECTORS"
             else -> ""
         }
     }
@@ -200,7 +204,17 @@ object GLCommand {
 
     fun glGetIntegerv(key : Int, buffer: IntBuffer) {
         GLES30.glGetIntegerv(key, buffer)
-        checkError(object {}.javaClass.enclosingMethod!!.name + "(${key})")
+        checkError(object {}.javaClass.enclosingMethod!!.name + "(${getStr(key)})")
+    }
+
+    fun glEnable(key : Int) {
+        GLES30.glEnable(key)
+        checkError(object {}.javaClass.enclosingMethod!!.name + "(${getStr(key)})")
+    }
+
+    fun glBlendFunc(src : Int, dst : Int) {
+        GLES30.glBlendFunc(src, dst)
+        checkError(object {}.javaClass.enclosingMethod!!.name + "(${getStr(src)}, ${getStr(dst)})")
     }
 
 }

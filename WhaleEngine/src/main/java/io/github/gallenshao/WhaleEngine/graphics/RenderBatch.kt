@@ -30,6 +30,7 @@ class RenderBatch(var size : Size) {
     }
 
     fun compile() {
+        renderer?.release()
         renderer = Renderer(SCENE_VERTEX_SHADER, genFragmentShader())
     }
 

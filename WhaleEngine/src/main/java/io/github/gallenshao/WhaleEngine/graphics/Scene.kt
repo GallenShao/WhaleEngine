@@ -38,6 +38,10 @@ class Scene(var size_ : Size,
         renderBatches.forEach { batch -> batch.compile() }
     }
 
+    fun release() {
+        renderBatches.forEach { batch -> batch.release() }
+    }
+
     fun render() {
         renderBatches.forEach { batch -> batch.render() }
     }

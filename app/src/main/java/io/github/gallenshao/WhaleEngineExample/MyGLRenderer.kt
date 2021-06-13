@@ -14,29 +14,37 @@ class MyGLRenderer : GLSurfaceView.Renderer {
     }
     val scene by scene_delegate
 
+    val rect by lazy {
+        val r = RectObject2D()
+        r.color = Vec4(1.0f, 0.0f, 0.0f, 1.0f)
+        r.size = Size(100.0f, 100.0f)
+        r
+    }
+
+    val circle by lazy {
+        val c = CircleObject2D()
+        c.color = Vec4(0.0f, 1.0f, 0.0f, 1.0f)
+        c.size = Size(100.0f, 100.0f)
+        c
+    }
+
+    var rect_instance1 : Object2DInstance = rect.genInstance()
+    var rect_instance2 : Object2DInstance = rect.genInstance()
+    var circle_instance1 : Object2DInstance = circle.genInstance()
+    var circle_instance2 : Object2DInstance = circle.genInstance()
+
     override fun onSurfaceCreated(p0: GL10?, p1: EGLConfig?) {
         glClearColor(1.0f, 1.0f, 1.0f, 1.0f);
 
-        val rect = RectObject2D()
-        rect.color = Vec4(1.0f, 0.0f, 0.0f, 1.0f)
-        rect.size = Size(100.0f, 100.0f)
-
-        val rect_instance1 = rect.genInstance()
-        rect_instance1.position = Point(50.0f, 50.0f)
-
-        val rect_instance2 = rect.genInstance()
-        rect_instance2.position = Point(300.0f, 300.0f)
-
-        val circle = CircleObject2D()
-        circle.color = Vec4(0.0f, 1.0f, 0.0f, 1.0f)
-        circle.size = Size(100.0f, 200.0f)
-
-        val circle_instance1 = circle.genInstance()
-        circle_instance1.position = Point(500.0f, 500.0f)
+        rect_instance1.position = Point(50.0f, 2000.0f)
+        rect_instance2.position = Point(500.0f, 2000.0f)
+        circle_instance1.position = Point(300.0f, 2000.0f)
+        circle_instance2.position = Point(800.0f, 2000.0f)
 
         scene.addInstance(rect_instance1)
         scene.addInstance(rect_instance2)
         scene.addInstance(circle_instance1)
+        scene.addInstance(circle_instance2)
 
         scene.compile()
     }
@@ -49,8 +57,20 @@ class MyGLRenderer : GLSurfaceView.Renderer {
         }
     }
 
+    fun go(instance : Object2DInstance, speed : Int) {
+        instance.position = Point(instance.position.x, instance.position.y - speed)
+        if (instance.position.y - instance.object2D.size.h / 2 < 0) {
+            instance.position = Point(instance.position.x, instance.object2D.size.h / 2)
+        }
+    }
+
     override fun onDrawFrame(p0: GL10?) {
         glClear(GL_COLOR_BUFFER_BIT)
+        go(rect_instance1, 5)
+        go(rect_instance2, 10)
+        go(circle_instance1, 15)
+        go(circle_instance2, 20)
+
         scene.render()
     }
 

@@ -9,7 +9,9 @@ import io.github.gallenshao.WhaleEngine.graphics.*
 class MyGLRenderer : GLSurfaceView.Renderer {
 
     var canvasSize : Size = Size(0.0f, 0.0f)
-    val scene_delegate = lazy { Scene(canvasSize) }
+    val scene_delegate = lazy {
+        Scene(canvasSize, RectObject2D(canvasSize, Vec4(1.0f, 1.0f, 0.0f, 1.0f)))
+    }
     val scene by scene_delegate
 
     override fun onSurfaceCreated(p0: GL10?, p1: EGLConfig?) {

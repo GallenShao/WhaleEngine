@@ -4,7 +4,7 @@ import io.github.gallenshao.utils.LogUtils
 import io.github.gallenshao.utils.TAG
 
 class Scene(var size_ : Size,
-            val background : RectObject2D = RectObject2D(size_, Vec4(1.0f, 1.0f, 0.0f, 1.0f))) {
+            val background : RectObject2D = RectObject2D(size_, Vec4(1.0f, 1.0f, 1.0f, 1.0f))) {
 
     val backgroundInstance by lazy {
         val instance = background.genInstance()

@@ -28,7 +28,7 @@ open class GLBuffer(
     }
     val id by idDelegate
 
-    fun active() {
+    open fun active() {
         GLCommand.glBindBuffer(type, id)
     }
 
@@ -39,7 +39,8 @@ open class GLBuffer(
     fun updateValue(buffer: Buffer) {
         val size = buffer.capacity() * item_size
         GLCommand.glBindBuffer(type, id)
-        GLCommand.glBufferSubData(type, 0, size, buffer)
+        GLCommand.glBufferData(type, size, buffer, GL_DYNAMIC_DRAW)
+//        GLCommand.glBufferSubData(type, 0, size, buffer)
     }
 
     fun release() {

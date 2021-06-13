@@ -16,7 +16,7 @@ object LogUtils {
     val WARNING = -3
     val ERROR = -4
 
-    var minLogLevel = INFO
+    var minLogLevel = DEBUG
 
     fun e(tag: String, msg: String) {
         if (minLogLevel >= ERROR) {

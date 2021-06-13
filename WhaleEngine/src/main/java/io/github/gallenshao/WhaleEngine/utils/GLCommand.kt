@@ -198,4 +198,9 @@ object GLCommand {
         checkError(object {}.javaClass.enclosingMethod!!.name)
     }
 
+    fun glGetIntegerv(key : Int, buffer: IntBuffer) {
+        GLES30.glGetIntegerv(key, buffer)
+        checkError(object {}.javaClass.enclosingMethod!!.name + "(${key})")
+    }
+
 }

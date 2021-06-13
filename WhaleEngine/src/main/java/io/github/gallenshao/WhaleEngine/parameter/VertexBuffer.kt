@@ -22,8 +22,8 @@ class VertexBuffer(
             updateValue(BufferUtils.getBuffer(vertices))
         } else {
             LogUtils.i(TAG, "vertex buffer not initialize, simply replace it")
-            vertices_ = vertices;
         }
+        vertices_ = vertices
     }
 
 }

@@ -49,10 +49,12 @@ class Program {
         }
 
         private fun compileFragmentShader(shader: String) : Int {
+            LogUtils.d(TAG, "compiling fragment shader: \n${shader}")
             return compileShader(GL_FRAGMENT_SHADER, shader)
         }
 
         private fun compileVertexShader(shader : String) : Int {
+            LogUtils.d(TAG, "compiling vertex shader: \n${shader}")
             return compileShader(GL_VERTEX_SHADER, shader)
         }
 

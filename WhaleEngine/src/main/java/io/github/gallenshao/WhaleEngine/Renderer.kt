@@ -39,7 +39,7 @@ class Renderer(
         program.release()
     }
 
-    fun setVec4Parameter(key: String, x: Float, y: Float, z: Float, w: Float) {
+    fun setVec4Parameter(key: String, x: Float = 0.0f, y: Float = 0.0f, z: Float = 0.0f, w: Float = 0.0f) {
         val parameter = parameters.getOrPut(key, {
             Vec4Parameter(key)
         }) as Vec4Parameter
@@ -50,7 +50,7 @@ class Renderer(
         val parameter = parameters.getOrPut(VERTEX_PARAMETER_KEY, {
             VertexParameter(vertices, layout)
         }) as VertexParameter
-        parameter.updateValue(vertices)
+        parameter.updateValue(vertices, layout)
     }
 
     fun setIndices(indices : IntArray) {
@@ -59,6 +59,11 @@ class Renderer(
         }) as IndexParameter
         parameter.updateValue(indices)
         elementSize = indices.size
+    }
+
+    fun setCombinedParameter(combinedParameter: CombinedParameter) {
+        setVertices(combinedParameter.vertices_.toFloatArray(), combinedParameter.layout)
+        setIndices(combinedParameter.indices_.toIntArray())
     }
 
     private fun bindParameters() {

@@ -22,7 +22,7 @@ class IndexBuffer(
             updateValue(BufferUtils.getBuffer(indices))
         } else {
             LogUtils.i(TAG, "index buffer not initialize, simply replace it")
-            indices_ = indices;
         }
+        indices_ = indices
     }
 }
